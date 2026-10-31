@@ -1,0 +1,21 @@
+[[ports]]
+name = "subscriber0"
+role = "subscriber"
+subnet = "10.0.0.0/24"
+
+[[ports]]
+name = "uplink0"
+role = "uplink"
+
+[cgnat]
+enabled = true
+listen_subnet = "10.0.0.0/24"
+public_pool = ["203.0.113.10", "203.0.113.11", "203.0.113.12"]
+
+[[routes]]
+dst = "0.0.0.0/0"
+port = "uplink0"
+
+[[routes]]
+dst = "10.0.0.0/24"
+port = "subscriber0"
